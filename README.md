@@ -2,12 +2,12 @@
 This is a process API that gives access to the list of Space Events and lets search event by name.
 Output data is **application/json** format.
 
-###Used external APIs:
+### Used external APIs:
 * https://lldev.thespacedevs.com/2.2.0/event/
 * https://lldev.thespacedevs.com/2.2.0/event/upcoming
 * https://api.nasa.gov/planetary/apod
 
-###End points provided by this API:
+### End points provided by this API:
 * GET: http://localhost:8081/api/events
     * **limit** _(default 10)_ - optional;
     * **offset** _(default 0)_ - optional;
@@ -21,7 +21,7 @@ Output data is **application/json** format.
 
 *__Notice:__ if GET: http://localhost:8081/api/events/name finds more than one record than a list of available Event names is returned!*   
     
-####Examples:
+#### Examples:
 * http://localhost:8081/api/events
 ```javascript
 [
