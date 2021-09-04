@@ -20,7 +20,7 @@ Output data is **application/json** format.
     * **eventName** - required.
 
 *__Notice:__ if GET: http://localhost:8081/api/events/name finds more than one record than a list of available Event names is returned!*   
-*Expected spaceEventType values:* Moon Landing| Flyby| Press Event| Docking| Undocking| Landing| Launch| Rehearsal| Relocation| Release| Celestial Event| Unknown| EVA| Berthing| Static Fire| Spacecraft Event| Abort Test| Hatch Opening| Test Flight| Change of Command| Orbital Insertion| Farewell Ceremony| Ambient Pressure Test| Cryoproof Test| Wet Dress Rehearsal
+*__Expected spaceEventType values:__* Moon Landing| Flyby| Press Event| Docking| Undocking| Landing| Launch| Rehearsal| Relocation| Release| Celestial Event| Unknown| EVA| Berthing| Static Fire| Spacecraft Event| Abort Test| Hatch Opening| Test Flight| Change of Command| Orbital Insertion| Farewell Ceremony| Ambient Pressure Test| Cryoproof Test| Wet Dress Rehearsal
     
 #### Examples:
 * http://localhost:8081/api/events
