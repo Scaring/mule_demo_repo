@@ -3,7 +3,6 @@
     "implementation.xml",
     "interface.xml",
     "global.xml",
-    "implementation-test-suite.xml",
     "errorHandling.xml"
   ],
   "secureProperties": [],
@@ -14,6 +13,7 @@
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
+      "exportedPackages": [],
       "exportedResources": [
         "api/dataTypes/Event.raml",
         "api/dataTypes/EventType.raml",
@@ -32,11 +32,8 @@
         "global.xml",
         "implementation.xml",
         "interface.xml",
-        "log4j2.xml",
-        "log4j2-test.xml"
-      ],
-      "includeTestDependencies": "true",
-      "exportedPackages": []
+        "log4j2.xml"
+      ]
     }
   },
   "bundleDescriptorLoader": {
