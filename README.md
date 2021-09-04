@@ -23,7 +23,8 @@ Output data is **application/json** format.
     
 ####Examples:
 * http://localhost:8081/api/events
-`<[
+```javascript
+[
     {
         "id": 77,
         "name": "2017 NASA Astronaut class graduation ceremony",
@@ -60,9 +61,11 @@ Output data is **application/json** format.
         "video_url": "https://www.youtube.com/watch?v=21X5lGlDOfg",
         "feature_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/event_images/8th_meeting_of__image_20201201090808.jpeg"
     }
-]>`
+]
+```
 * http://localhost:8081/api/events/upcoming
-`<[
+```javascript
+[
     {
         "id": 275,
         "name": "CRS-23 Dragon Docking",
@@ -87,9 +90,11 @@ Output data is **application/json** format.
         "video_url": "https://www.youtube.com/watch?v=21X5lGlDOfg",
         "feature_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/event_images/crs-23_dragon_u_image_20210519074227.jpeg"
     }
-]>`
+]
+```
 * http://localhost:8081/api/events/name?eventName=Apollo+11th+50th+Anniversary
-`<{
+```javascript
+{
     "id": 25,
     "name": "Apollo 11th 50th Anniversary - Lunar Landing",
     "date": "2019-07-20T20:17:00Z",
@@ -104,4 +109,5 @@ Output data is **application/json** format.
     "news_url": "https://www.nasa.gov/feature/apollo-11-in-real-time-50-years-later/",
     "video_url": "https://apolloinrealtime.org/11/",
     "feature_image": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/event_images/apollo252011th2520-2520lunar2520landing252050th2520anniversary_image_20190715211113.jpg"
-}>`
+}
+```
