@@ -30,11 +30,11 @@
         <flow-ref doc:name="getSpaceEvents" doc:id="743b33f3-f747-476b-b6d5-3cefb5fbda14" name="getSpaceEvents" targetValue="#[message]" />
         <error-handler ref="errorHandling" />
     </flow>
-    <flow name="get:\events\upcoming:space-events-demo-config">
+    <flow name="get:\upcoming:space-events-demo-config">
         <flow-ref doc:name="getUpcomingSpaceEvents" doc:id="1a54f678-a1a3-40fe-a791-c52ef96f9221" name="getUpcomingSpaceEvents" />
         <error-handler ref="errorHandling" />
     </flow>
-    <flow name="get:\events\name:space-events-demo-config">
+    <flow name="get:\event\name:space-events-demo-config">
 		<flow-ref doc:name="getSpaceEventByName" doc:id="cbc4ff51-7807-4102-b0ce-2ce1af5532fd" name="getSpaceEventByName" targetValue="#[message]"/>
 		<error-handler ref="errorHandling" />
     </flow>

@@ -12,8 +12,8 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 		<logger level="INFO" doc:name="limit" doc:id="54305f3a-c1c9-43a8-ae43-eb557959d1b7" message='#["limit: " ++ vars.limit as String]'/>
 	</sub-flow>
 	<sub-flow name="set-type-period-validate-period" doc:id="83e6bfd6-a1f1-4cdc-aa75-5d5be1ad7d9f" >
-		<set-variable value='#[message.attributes.queryParams.spaceEventType default ""]' doc:name="SpaceEventType" doc:id="2436963c-f3b6-4107-838b-3cb16c268853" variableName="spaceEventType" />
-		<logger level="INFO" doc:name="spaceEventType" doc:id="721c3c3f-dc2f-4867-accc-fedc804b8503" message='#["spaceEventType: " ++ vars.spaceEventType as String]'/>
+		<set-variable value='#[message.attributes.queryParams."type" default ""]' doc:name="type" doc:id="2436963c-f3b6-4107-838b-3cb16c268853" variableName="type" />
+		<logger level="INFO" doc:name="type" doc:id="721c3c3f-dc2f-4867-accc-fedc804b8503" message='#["spaceEventType: " ++ vars."type" as String]'/>
 		<set-variable value='#[message.attributes.queryParams.period default ""]' doc:name="period" doc:id="d0364604-5871-4597-a6dd-fa84b43c8810" variableName="period" />
 		<logger level="INFO" doc:name="period" doc:id="6f278556-adf2-4d93-8df7-2447c8b87cc8" message='#["period: " ++ vars.period as String]'/>
 		<choice doc:name="Choice" doc:id="c1c2036d-cc19-44f0-a41b-485d3a7e8887" >
@@ -47,13 +47,13 @@ output application/json
 var itemContains = ( i, v ) -> (i contains(v))
 var itemEquals = ( i, v ) -> (i == v)
 ---
-if(vars.spaceEventType != "" and vars.period != "") 
+if(vars."type" != "" and vars.period != "") 
     payload filter ((item, index) -> 
     	itemContains(item.date[0 to 9], vars.period) and 
-    	itemEquals(item."type", vars.spaceEventType))
-else if(vars.spaceEventType != "") 
+    	itemEquals(item."type", vars."type"))
+else if(vars."type" != "") 
     payload filter ((item, index) -> 
-    	itemEquals(item."type", vars.spaceEventType))
+    	itemEquals(item."type", vars."type"))
 else if(vars.period != "")
     payload filter ((item, index) -> 
     	itemContains(item.date[0 to 9], vars.period))
@@ -64,13 +64,13 @@ else
 		<logger level="INFO" doc:name="sizeOf payload" doc:id="7fb57a45-9c51-47c2-ad99-d95cb6d23e72" message='#["count: " ++ sizeOf(payload as Array)]'/>
 	</sub-flow>
 	<sub-flow name="getSpaceEventByName" doc:id="3776597a-82e9-4cef-9d1b-f1e8b535c282">
-		<set-variable value='#[message.attributes.queryParams.eventName default ""]' doc:name="eventName" doc:id="86cf1294-dc2f-4cb8-a41d-2ed92129ce82" variableName="eventName"/>
-		<logger level="INFO" doc:name="eventName" doc:id="7c750509-3373-4fde-9417-46547175fe13" message='#["eventName: " ++ vars.eventName as String]'/>
-		<http:request method="GET" doc:name="GET /events/name?eventName={searched}" doc:id="6d27a4ca-daca-4499-8f25-699cfd0f70c0" config-ref="HTTP_Request_configuration" path="/event/">
+		<set-variable value='#[message.attributes.queryParams.name default ""]' doc:name="name" doc:id="86cf1294-dc2f-4cb8-a41d-2ed92129ce82" variableName="name"/>
+		<logger level="INFO" doc:name="name" doc:id="7c750509-3373-4fde-9417-46547175fe13" message='#["name: " ++ vars.name as String]'/>
+		<http:request method="GET" doc:name="GET /event?name={searched}" doc:id="6d27a4ca-daca-4499-8f25-699cfd0f70c0" config-ref="HTTP_Request_configuration" path="/event/">
 			<http:query-params ><![CDATA[#[output application/java
 ---
 {
-	"search" : vars.eventName,
+	"search" : vars.name,
 	"limit" : 100
 }]]]></http:query-params>
 		</http:request>
@@ -156,7 +156,7 @@ output application/json
 	</sub-flow>
 	<sub-flow name="getUpcomingSpaceEvents" doc:id="eed31231-5f13-4b24-a320-78170b589a1d" >
 		<flow-ref doc:name="set-limit-and-offset" doc:id="f44a13c2-24f4-4c03-a623-7491c63c1d9d" name="set-limit-and-offset"/>
-		<http:request method="GET" doc:name="GET /events/upcoming" doc:id="fcb745b6-6da9-4882-a3e1-7af683000170" config-ref="HTTP_Request_configuration" path="/event/upcoming" >
+		<http:request method="GET" doc:name="GET /upcoming" doc:id="fcb745b6-6da9-4882-a3e1-7af683000170" config-ref="HTTP_Request_configuration" path="/event/upcoming" >
 			<http:query-params ><![CDATA[#[output application/java
 ---
 {

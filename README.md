@@ -11,16 +11,18 @@ Output data is **application/json** format.
 * GET: http://localhost:8081/api/events
     * **limit** _(default 10)_ - optional;
     * **offset** _(default 0)_ - optional;
-    * **spaceEventType** _from the list of events_ - optional;
+    * **type** _from the list of events_ - optional;
     * **period** format _yyyy | yyyy-mm | yyyy-mm-dd_ - optional.
-* GET: http://localhost:8081/api/events/upcoming
+    
+* GET: http://localhost:8081/api/upcoming
     * **limit** _(default 10)_ - optional;
-    * **offset** _(default 0)_ - optional.    
-* GET: http://localhost:8081/api/events/name
-    * **eventName** - required.
+    * **offset** _(default 0)_ - optional.   
+     
+* GET: http://localhost:8081/api/event
+    * **name** - required.
 
 *__Notice:__ if GET: http://localhost:8081/api/events/name finds more than one record than a list of available Event names is returned!*   
-*__Expected spaceEventType values:__* Moon Landing| Flyby| Press Event| Docking| Undocking| Landing| Launch| Rehearsal| Relocation| Release| Celestial Event| Unknown| EVA| Berthing| Static Fire| Spacecraft Event| Abort Test| Hatch Opening| Test Flight| Change of Command| Orbital Insertion| Farewell Ceremony| Ambient Pressure Test| Cryoproof Test| Wet Dress Rehearsal
+*__Expected type values:__* Moon Landing| Flyby| Press Event| Docking| Undocking| Landing| Launch| Rehearsal| Relocation| Release| Celestial Event| Unknown| EVA| Berthing| Static Fire| Spacecraft Event| Abort Test| Hatch Opening| Test Flight| Change of Command| Orbital Insertion| Farewell Ceremony| Ambient Pressure Test| Cryoproof Test| Wet Dress Rehearsal
     
 #### Examples:
 * http://localhost:8081/api/events
@@ -64,7 +66,7 @@ Output data is **application/json** format.
     }
 ]
 ```
-* http://localhost:8081/api/events/upcoming
+* http://localhost:8081/api/upcoming
 ```javascript
 [
     {
@@ -93,7 +95,7 @@ Output data is **application/json** format.
     }
 ]
 ```
-* http://localhost:8081/api/events/name?eventName=Apollo+11th+50th+Anniversary
+* http://localhost:8081/api/event?name=Apollo+11th+50th+Anniversary
 ```javascript
 {
     "id": 25,

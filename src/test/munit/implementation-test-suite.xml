@@ -241,8 +241,8 @@ output application/json
 				</munit-tools:mock-when>
 			</munit:behavior>
 			<munit:execution>
-				<munit:set-event doc:name="queryParams_spaceEventType_Press_Event" doc:id="f74ae4f5-f905-4ead-b1e7-0bf0f298ef16" cloneOriginalEvent="true">
-				<munit:attributes value='#[queryParams:{limit:3, spaceEventType:"Press Event"}]' />
+				<munit:set-event doc:name="queryParams_type_Press_Event" doc:id="f74ae4f5-f905-4ead-b1e7-0bf0f298ef16" cloneOriginalEvent="true">
+				<munit:attributes value='#[queryParams:{limit:3, "type":"Press Event"}]' />
 				</munit:set-event>
 				<flow-ref doc:name="to-getSpaceEvents" doc:id="b897cd12-0fff-4d7c-b887-3f82134e94ff" name="getSpaceEvents" />
 				<ee:transform doc:name="expected-flow-response" doc:id="8893663c-717a-4a65-a442-1fac1d453fed">
@@ -517,8 +517,8 @@ output application/json
 				</munit-tools:mock-when>
 			</munit:behavior>
 			<munit:execution>
-				<munit:set-event doc:name="queryParams_period_2020_spaceEventType_Press_Event" doc:id="d5da1bb6-e82e-4a6b-a86d-8cc31842a134" cloneOriginalEvent="true">
-				<munit:attributes value='#[queryParams:{limit:3, period:"2020",spaceEventType:"Press Event"}]' />
+				<munit:set-event doc:name="queryParams_period_2020_type_Press_Event" doc:id="d5da1bb6-e82e-4a6b-a86d-8cc31842a134" cloneOriginalEvent="true">
+				<munit:attributes value='#[queryParams:{limit:3, period:"2020","type":"Press Event"}]' />
 				</munit:set-event>
 				<flow-ref doc:name="to-getSpaceEvents" doc:id="dcb2f919-f672-4dbb-97dc-db5df4fd25bb" name="getSpaceEvents" />
 				<ee:transform doc:name="expected-flow-response" doc:id="68516b07-ea36-45a3-93ec-c62b744e12a3">
@@ -1030,12 +1030,10 @@ output application/json
 					</ee:variables>
 				</ee:transform>
 				<munit-tools:mock-when doc:name="Mock when" doc:id="5514638f-e87b-4d67-9060-a17da41a98bb" processor="http:request">
-					<munit-tools:with-attributes>
-						<munit-tools:with-attribute whereValue="GET /events/upcoming" attributeName="doc:name" />
-						<munit-tools:with-attribute whereValue="fcb745b6-6da9-4882-a3e1-7af683000170" attributeName="doc:id" />
-						<munit-tools:with-attribute whereValue="HTTP_Request_configuration" attributeName="config-ref" />
-					</munit-tools:with-attributes>
-					<munit-tools:then-return>
+					<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="fcb745b6-6da9-4882-a3e1-7af683000170" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return>
 						<munit-tools:payload value="#[vars.mockedApiResponse]" mediaType="application/json" />
 					</munit-tools:then-return>
 				</munit-tools:mock-when>
@@ -1133,7 +1131,7 @@ output application/json
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="2271a11c-397f-49d1-a222-f0134528d965" cloneOriginalEvent="true">
-				<munit:attributes value='#[queryParams:{eventName:"Lunar Landing"}]' />
+				<munit:attributes value='#[queryParams:{name:"Lunar Landing"}]' />
 			</munit:set-event>
 			<flow-ref doc:name="Flow-ref to getSpaceEventByName" doc:id="8cb47ff7-45a3-4240-a718-cbebe6e40e62" name="getSpaceEventByName"/>
 			<ee:transform doc:name="Transform Message" doc:id="11ce6a84-0452-496b-b75c-8b7b7a8e1535" >
@@ -1215,7 +1213,7 @@ output application/json
 			</munit:behavior>
 			<munit:execution>
 				<munit:set-event doc:name="Set Event" doc:id="f6350e7e-6fcb-4693-b5fd-b7e2e52ca03e" cloneOriginalEvent="true">
-				<munit:attributes value='#[queryParams:{eventName:"Apollo 11th 50th Anniversary - Lunar Landing"}]' />
+				<munit:attributes value='#[queryParams:{name:"Apollo 11th 50th Anniversary - Lunar Landing"}]' />
 				</munit:set-event>
 				<flow-ref doc:name="Flow-ref to getSpaceEventByName" doc:id="9d94579f-b94e-46d8-b1b0-91642bd06236" name="getSpaceEventByName" />
 				<ee:transform doc:name="Transform Message" doc:id="22b540cf-cab7-4532-8370-68e796efcaa8">
@@ -1277,7 +1275,7 @@ output application/json
 			</munit-tools:mock-when>
 		</munit:behavior>
 		<munit:execution >
-			<flow-ref doc:name="get:\events\name:space-events-demo-config" doc:id="ac55c4e3-5e84-4bdb-bddf-bc66a91a969a" name="get:\events\name:space-events-demo-config"/>
+			<flow-ref doc:name="get:\event\name:space-events-demo-config" doc:id="ac55c4e3-5e84-4bdb-bddf-bc66a91a969a" name="get:\event\name:space-events-demo-config"/>
 		</munit:execution>
 		<munit:validation >
 			<munit-tools:assert-that doc:name="404" doc:id="f08f6ee6-6ec8-41ed-8437-73426a0a65be" is='#[MunitTools::equalTo("404")]' expression="#[vars.httpStatus]" />

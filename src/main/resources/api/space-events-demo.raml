@@ -15,7 +15,7 @@ types:
         required: false
       period:
         required: false
-      spaceEventType:
+      type:
         required: false
         type: EventType
     responses:
@@ -26,43 +26,32 @@ types:
             examples:
               output: !include /examples/EventsExample.raml
     
-  /name:
-    get:
-      description: Search space event by name.
-      queryParameters:
-        eventName:
-          required: true
-      responses:
-        200:
-          body:
-            application/json:
-              type: Event
-              examples:
-                output: !include /examples/SingleEventExample.raml
-        300:
-          body:
-            application/json:
-              example: | 
-                {
-                  "message": "We found too many records for your query, try one of the next!",
-                  "variants": [
-                     "2017 NASA Astronaut class graduation ceremony",
-                     "Mars 2020 NASA Administrator & Center Director Briefing"
-                     ]
-                }     
-        400:
-          body:
-            application/json:
-              example: | 
-                {"message": "Events not found"}          
+/event:
+  get:
+    description: Search space event by name.
+    queryParameters:
+      name:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            type: Event
+            examples:
+              output: !include /examples/SingleEventExample.raml    
+      400:
+        body:
+          application/json:
+            example: | 
+              {"message": "Events not found"}          
       
-  /upcoming:
-    get:
-      description: Return all upcoming space events.
-      responses:
-        200:
-          body:
-            application/json:
-              type: Event[]
-              examples:
-                output: !include /examples/EventsExample.raml
+/upcoming:
+  get:
+    description: Return all upcoming space events.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Event[]
+            examples:
+              output: !include /examples/EventsExample.raml
