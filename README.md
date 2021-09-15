@@ -8,7 +8,7 @@ Output data is **application/json** format.
 * https://api.nasa.gov/planetary/apod
 
 ### Used port:
-8084
+8044
 
 ### End points provided by this API:
 * GET: http://localhost:{port}/api/events
