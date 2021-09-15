@@ -7,25 +7,28 @@ Output data is **application/json** format.
 * https://lldev.thespacedevs.com/2.2.0/event/upcoming
 * https://api.nasa.gov/planetary/apod
 
+### Used port:
+8084
+
 ### End points provided by this API:
-* GET: http://localhost:8081/api/events
+* GET: http://localhost:{port}/api/events
     * **limit** _(default 10)_ - optional;
     * **offset** _(default 0)_ - optional;
     * **type** _from the list of events_ - optional;
     * **period** format _yyyy | yyyy-mm | yyyy-mm-dd_ - optional.
     
-* GET: http://localhost:8081/api/upcoming
+* GET: http://localhost:{port}/api/upcoming
     * **limit** _(default 10)_ - optional;
     * **offset** _(default 0)_ - optional.   
      
-* GET: http://localhost:8081/api/event
+* GET: http://localhost:{port}/api/event
     * **name** - required.
 
-*__Notice:__ if GET: http://localhost:8081/api/events/name finds more than one record than a list of available Event names is returned!*   
+*__Notice:__ if GET: http://localhost:8081/api/event?name={searched} finds more than one record than a list of available Event names is returned!*   
 *__Expected type values:__* Moon Landing| Flyby| Press Event| Docking| Undocking| Landing| Launch| Rehearsal| Relocation| Release| Celestial Event| Unknown| EVA| Berthing| Static Fire| Spacecraft Event| Abort Test| Hatch Opening| Test Flight| Change of Command| Orbital Insertion| Farewell Ceremony| Ambient Pressure Test| Cryoproof Test| Wet Dress Rehearsal
     
 #### Examples:
-* http://localhost:8081/api/events
+* http://localhost:{port}/api/events
 ```javascript
 [
     {
@@ -66,7 +69,7 @@ Output data is **application/json** format.
     }
 ]
 ```
-* http://localhost:8081/api/upcoming
+* http://localhost:{port}/api/upcoming
 ```javascript
 [
     {
@@ -95,7 +98,7 @@ Output data is **application/json** format.
     }
 ]
 ```
-* http://localhost:8081/api/event?name=Apollo+11th+50th+Anniversary
+* http://localhost:{port}/api/event?name=Apollo+11th+50th+Anniversary
 ```javascript
 {
     "id": 25,

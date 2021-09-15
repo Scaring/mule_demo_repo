@@ -52,13 +52,22 @@
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<failBuild>false</failBuild>
+						
 						<requiredApplicationCoverage>0</requiredApplicationCoverage>
 						<requiredResourceCoverage>0</requiredResourceCoverage>
 						<requiredFlowCoverage>0</requiredFlowCoverage>
+						
 						<ignoreFiles>
 							<ignoreFile>interface.xml</ignoreFile>
 						</ignoreFiles>
+						
+						<formats>
+							<format>console</format>
+							<format>html</format>
+						</formats>
 					</coverage>
+					
+					<runtimeVersion>4.3.0-20210622</runtimeVersion>
 				</configuration>
 			</plugin>
 		</plugins>

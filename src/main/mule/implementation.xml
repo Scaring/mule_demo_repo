@@ -71,7 +71,7 @@ else
 ---
 {
 	"search" : vars.name,
-	"limit" : 100
+	"limit" : 20
 }]]]></http:query-params>
 		</http:request>
 		<set-variable value="#[payload.count default 0]" doc:name="found" doc:id="17fb7bc0-9e84-46c1-af01-73ff7cdc88f0" variableName="found"/>
@@ -125,7 +125,7 @@ output application/json
 ---
 {
 	"date" : vars.date,
-	"api_key" : "vej4yJeNbdS1bjusRgsbUGZf0WA9cXOoOV62Kua5"
+	"api_key" : Mule::p('nasa.api_key')
 }]]]></http:query-params>
 				</http:request>
 				<ee:transform doc:name="add-nasa-data-to-event" doc:id="1b3fb980-9912-42ee-b681-98954a683c62" >

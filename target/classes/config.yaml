@@ -1,3 +1,6 @@
+http:
+  port: "8044"
+  
 thespacedevs:
   host: "lldev.thespacedevs.com"
   basepath: "/2.0.0"
